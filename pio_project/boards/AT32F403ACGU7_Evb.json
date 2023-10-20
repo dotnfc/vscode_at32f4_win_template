@@ -1,0 +1,37 @@
+{
+  "build": {
+    "core": "ArteryTek AT32",
+    "cpu": "cortex-m4",
+    "f_cpu": "240000000L",
+    "mcu": "AT32F403ACGU7",
+    "product_line": "AT32F403AxG",
+    "bsp": "AT32F403A_407",
+    "variant": "AT32F403ACGU7"
+  },
+  "debug": {
+    "default_tools": [
+      "jlink"
+    ],
+    "openocd_target": "at32f403axx",
+    "jlink_device": "AT32F403ACGU7",
+    "svd_path": "AT32F403Axx_v2.svd"
+  },
+  "frameworks": [
+    "at32firmlib"
+  ],
+  "name": "AT32F403ACGU7 (96K/224K RAM. 1024K Flash)",
+  "upload": {
+    "maximum_ram_size": 98304,
+    "maximum_size": 1048576,
+    "protocol": "jlink",
+    "protocols": [
+      "cmsis-dap",
+      "atlink",
+      "atlink_dap_v2",
+      "jlink",
+      "stlink"
+    ]
+  },
+  "url": "https://www.arterychip.com/en/product/AT32F403A.jsp",
+  "vendor": "Generic"
+}
