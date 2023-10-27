@@ -17,6 +17,10 @@
         "PATH": "${config:CUBEIDE_TOOLS}:${env:PATH}"
     },
 
+    "terminal.integrated.env.linux": {
+        "PATH": "${config:CUBEIDE-ARMGCC}:${config:CUBEIDE-MAKE}:${env:PATH}"
+    },
+    
     "cmake.configureSettings": {
         "CMAKE_BUILD_TYPE": "Release",
         "CMAKE_TOOLCHAIN_FILE": "../toolchain.cmake",
