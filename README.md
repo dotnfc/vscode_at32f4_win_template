@@ -6,10 +6,6 @@ artery at32f403acgu7 vscode template for windows
   
   > you can install artery_pio from [here](https://github.com/ArteryTek/platform-arterytekat32)
 
-  > the PIO jlink will hang serveral minutes before downloading to and debugging target, i cannot fix that.
-  if you have any suggestion, please let me know, thanks.
-
-
 NOTE 
 
 i have not use openocd to debug target, just JLINK & STLink. so here is the toolchain for compiling and debugging:
