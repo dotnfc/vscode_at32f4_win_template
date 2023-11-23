@@ -21,6 +21,7 @@
             "cStandard": "c11",
             "cppStandard": "c++14",
             "configurationProvider": "vector-of-bool.cmake-tools",
+            "compilerPath": "${config:CUBEIDE-ARMGCC}/arm-none-eabi-gcc",
             "compileCommands": "${workspaceFolder}/build/compile_commands.json",
             "compilerArgs": [
                 "-mthumb",
