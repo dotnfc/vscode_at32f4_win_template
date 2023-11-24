@@ -1,0 +1,10 @@
+[
+  {
+    "name": "ARM GCC 10",
+    "compilers": {
+        "C": "d:\\Java\\ArmDev\\armgcc10\\bin\\arm-none-eabi-gcc.exe",
+        "CC": "d:\\Java\\ArmDev\\armgcc10\\bin\\arm-none-eabi-gcc.exe",
+        "CXX": "d:\\Java\\ArmDev\\armgcc10\\bin\\arm-none-eabi-g++.exe"
+    }
+  }
+]

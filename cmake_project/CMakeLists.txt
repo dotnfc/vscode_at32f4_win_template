@@ -31,11 +31,17 @@ include_directories(
         board/include 
         at32_lib/cmsis/cm4/core_support 
         at32_lib/cmsis/cm4/device_support
-        at32_lib/drivers/inc)
+        at32_lib/drivers/inc
+        at32_lib/usbd_class/cdc
+        at32_lib/usbd_drivers/inc
+        )
 
 add_definitions(-DDEBUG -DAT32F403ACGU7 -DAT32_F403A_EVB)
 
-file(GLOB_RECURSE SOURCES "user/*.*" "board/*.*" "at32_lib/*.*")
+file(GLOB_RECURSE SOURCES "user/*.*" "board/*.*" 
+        "at32_lib/cmsis/*.*" "at32_lib/drivers/*.*"
+        "at32_lib/usbd_drivers/*.*" "at32_lib/usbd_class/cdc/*.*"
+        )
 
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/at32_lib/cmsis/cm4/device_support/startup/gcc/linker/AT32F403AxG_FLASH.ld)
 
@@ -52,7 +58,22 @@ set(HEX_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.hex)
 set(BIN_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.bin)
 
 add_custom_command(TARGET ${PROJECT_NAME}.elf POST_BUILD
-        COMMAND ${CMAKE_OBJCOPY} -Oihex $<TARGET_FILE:${PROJECT_NAME}.elf> ${HEX_FILE}
-        COMMAND ${CMAKE_OBJCOPY} -Obinary $<TARGET_FILE:${PROJECT_NAME}.elf> ${BIN_FILE}
-        COMMENT "Building ${HEX_FILE}
+    COMMAND ${CMAKE_OBJCOPY} -Oihex $<TARGET_FILE:${PROJECT_NAME}.elf> ${HEX_FILE}
+    COMMAND ${CMAKE_OBJCOPY} -Obinary $<TARGET_FILE:${PROJECT_NAME}.elf> ${BIN_FILE}
+    COMMENT "Building ${HEX_FILE}
 Building ${BIN_FILE}")
+
+set(JFLASH_FILE ${PROJECT_BINARY_DIR}/upload.jlink)
+add_custom_command(TARGET ${PROJECT_NAME}.elf POST_BUILD
+    COMMAND echo "h" > ${JFLASH_FILE}
+    COMMAND echo "loadbin ${BIN_FILE}" >> ${JFLASH_FILE}
+    COMMAND echo "r" >> ${JFLASH_FILE}
+    COMMAND echo "g" >> ${JFLASH_FILE}
+    COMMAND echo "q" >> ${JFLASH_FILE}
+    COMMENT "Generating upload.jlink"
+)
+
+add_custom_target(upload_jlink
+    COMMAND ${JLINK_EXECUTABLE} -device AT32F403ACGU7 -speed 10000 -if swd -autoconnect 1 -NoGui 1 -CommanderScript ${JFLASH_FILE}
+    DEPENDS ${PROJECT_NAME}.elf
+)

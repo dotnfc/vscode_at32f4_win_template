@@ -1,6 +1,6 @@
 {
     "SEGGER": "d:/Program/SEGGER/JLink_V784c",
-    "ARMGCC": "d:/Java/ArmDev/armgcc10/bin",
+    "ARMGCC": "d:/Java/ArmDev/armgcc10",
     
     // "CUBEIDE-PLUGIN": "e:/Program/STM/STM32CubeIDE/plugins",
     "CUBEIDE-PLUGIN": "D:/Program/STM/STM32CubeIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins",
@@ -13,6 +13,9 @@
     "CUBEIDE-SVD": "${config:CUBEIDE-PLUGIN}/com.st.stm32cube.ide.mcu.productdb.debug_2.1.0.202306151215/resources/cmsis/STMicroelectronics_CMSIS_SVD",
     "CUBEIDE_TOOLS": "${config:CUBEIDE-ARMGCC};${config:CUBEIDE-MAKE}",
 
+    "environment": [
+        "CC" : "${config:CUBEIDE-ARMGCC}/arm-none-eabi-gcc.exe",
+    ],
     "terminal.integrated.env.windows": {
         "PATH": "${config:CUBEIDE_TOOLS}:${env:PATH}"
     },
@@ -20,17 +23,19 @@
     "terminal.integrated.env.linux": {
         "PATH": "${config:CUBEIDE-ARMGCC}:${config:CUBEIDE-MAKE}:${env:PATH}"
     },
-    
-    "cmake.configureSettings": {
-        "CMAKE_BUILD_TYPE": "Release",
-        "CMAKE_TOOLCHAIN_FILE": "../toolchain.cmake",
-        "CROSS_COMPILE": "${config:CUBEIDE-ARMGCC}/arm-none-eabi-"
+    "cmake.generator": "MinGW Makefiles",
+    "cmake.configureEnvironment": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "on"
     },
-    "files.associations": {
-        "*.cjson": "jsonc",
-        "*.wxss": "css",
-        "*.wxs": "javascript",
-        "at32f403a_407_clock.h": "c",
-        "at32f403a_407.h": "c"
-    }
+    "cmake.environment": {
+        "ARMGCC_DIR": "d:\\Java\\ArmDev\\armgcc10\\",
+        "CROSS_COMPILE": "d:\\Java\\ArmDev\\armgcc10\\"
+    },
+    "cmake.configureSettings": {
+        "CMAKE_BUILD_TYPE": "Debug"
+    },
+    "C_Cpp.default.intelliSenseMode": "gcc-arm",
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "cmake.configureOnEdit": false,
+    "cortex-debug.armToolchainPath": "d:\\Java\\ArmDev\\armgcc10\\bin"
 }

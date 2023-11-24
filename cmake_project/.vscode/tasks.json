@@ -1,46 +1,17 @@
 {
-	"version": "2.0.0",
-	"tasks": [
+    "version": "2.0.0",
+    "tasks": [
         {
+            "label": "upload firmware",
             "type": "shell",
-            "label": "Build: prepare",
-            "command": "cmake",
+            "command": "make",
             "args": [
-                "-DCMAKE_BUILD_TYPE=Debug",
-                "-B",
-                "build",
-                "-G",
-                "MinGW Makefiles",
-                "-DCROSS_COMPILE=d:/Java/ArmDev/armgcc10/bin/arm-none-eabi-"
+                "upload_jlink"
             ],
-            "detail": "CMake template build task",
-            "problemMatcher": []
-        },
-        {
-            "type": "shell",
-            "label": "Build: build",
-            "command": "cmake",
-            "args": [
-                "--build",
-                "build",
-                "--target",
-                "all",
-                "-j4"
-            ],
-            "detail": "CMake template build task",
-            "problemMatcher": []
-        },
-        {
-            "type": "shell",
-            "label": "Build: clean",
-            "command": "cmake",
-            "args": [
-                "--build",
-                "build",
-                "--target",
-                "clean"
-            ],
-            "detail": "CMake template clean task"
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
         }
     ]
 }

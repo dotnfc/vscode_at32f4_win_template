@@ -20,8 +20,9 @@
             ],
             "cStandard": "c11",
             "cppStandard": "c++14",
-            "configurationProvider": "vector-of-bool.cmake-tools",
-            "compilerPath": "${config:CUBEIDE-ARMGCC}/arm-none-eabi-gcc",
+            "intelliSenseMode": "gcc-arm",
+            "configurationProvider": "ms-vscode.cmake-tools",         
+            "compilerPath": "d:\\Java\\ArmDev\\armgcc10\\bin\\arm-none-eabi-g++.exe",   
             "compileCommands": "${workspaceFolder}/build/compile_commands.json",
             "compilerArgs": [
                 "-mthumb",

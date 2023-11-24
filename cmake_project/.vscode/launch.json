@@ -6,7 +6,6 @@
     "configurations": [
         
         // https://github.com/Marus/cortex-debug/wiki
-
         {
             // https://wiki.segger.com/J-Link_Visual_Studio_Code
             // https://github.com/Marus/cortex-debug/wiki/J-Link-Specific-Configuration
